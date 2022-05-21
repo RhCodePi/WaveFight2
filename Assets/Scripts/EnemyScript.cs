@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour , IEnemy
+public class EnemyScript : MonoBehaviour
 {
     private const int MAX_HEALTH = 100;
     [SerializeField] private GameObject popup, bloodParticle;
