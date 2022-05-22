@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float speed = 5f;
+    private float horizontal, xBound = 7.50f;
     private Rigidbody2D playerRb;
+    private Vector2 moveDir;
+    private Quaternion playerRotation = new Quaternion(0, 1, 0, 0);
     private Animator playerAnim;
     private GameManager gameManager;
-    private float horizontal, xBound = 7.50f;
-    [SerializeField] public float speed = 10f;
-    private Quaternion playerRotation = new Quaternion(0, 1, 0, 0);
-    [HideInInspector] public Vector2 moveDir;
-    private void Awake() {
+    private void Awake()
+    {
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         if(gameManager.getIsGameActive)
             PlayerMovement();
     }
@@ -38,5 +40,4 @@ public class PlayerController : MonoBehaviour
 
         playerAnim.SetFloat("Speed", Mathf.Abs(horizontal));
     }
-
 }

@@ -193,5 +193,5 @@ MonoBehaviour:
   scale: {x: 0.003003415, y: 0.007275606, z: 1}
   text: {fileID: 6693417414481063588}
   lifeTime: 0.8
-  minDist: 6
-  maxDist: 4.56
+  minDist: 4
+  maxDist: 5

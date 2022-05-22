@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    enum SpawnState {spawning, NotSpawning}
-    [SerializeField] private List<GameObject> enemyList;
+    [SerializeField] private List<GameObject> enemyTypeList;
     [SerializeField] private int levelEnemyCount = 3;
     [SerializeField] private GameObject gameOver, win, pause, nextStage;
     [SerializeField] private bool isLastStage;
+    [SerializeField] private GameObject _HealthBarUI;
+    enum SpawnState {spawning, NotSpawning}
+    private int enemyCount, currentScene;
     private bool isGameActive;
     private Vector3 spawnPosition;
-    private int enemyCount, currentScene;
     private SpawnState _state;
-    [SerializeField] private GameObject _HealthBarUI;
     private GameObject _BarSlide;
 
     void Start()
@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
         currentScene = SceneManager.GetActiveScene().buildIndex;
         _state = SpawnState.spawning;
-        //InvokeRepeating("SpawningEnemy", 0.2f,5f);
     }
 
     void Update()
@@ -55,8 +54,8 @@ public class GameManager : MonoBehaviour
     void SpawningEnemy()
     {
         spawnPosition = new Vector3(10, -4.14f);
-        int randomIndex = Random.Range(0, enemyList.Count);
-        _BarSlide = Instantiate(enemyList[randomIndex], spawnPosition, Quaternion.identity)
+        int randomIndex = Random.Range(0, enemyTypeList.Count);
+        _BarSlide = Instantiate(enemyTypeList[randomIndex], spawnPosition, Quaternion.identity)
                                 .transform.GetChild(1).transform.GetChild(1).gameObject;
         levelEnemyCount--;
     }
@@ -89,7 +88,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameRestart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void MainMenu()
     {

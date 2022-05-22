@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.UI; 
 public class DamageIndicator : MonoBehaviour
 {
-    public Vector3 scale;
-    public Text text;
-    public float lifeTime = 0.6f;
-    public float minDist = 2f;
-    public float maxDist = 3f;
+    [SerializeField] private Vector3 scale;
+    [SerializeField] private Text text;
+    [SerializeField] private float lifeTime = 0.6f, minDist = 2f,  maxDist = 3f;
     private Vector3 iniPos;
     private Vector3 targetPos;
     private float timer;
@@ -21,7 +19,6 @@ public class DamageIndicator : MonoBehaviour
         float dist = Random.Range(minDist,maxDist);
         targetPos = iniPos + (Quaternion.Euler(0,direction,0) * new Vector3(0,dist,0));
         transform.localScale = Vector3.zero;
-        
     }
 
     // Update is called once per frame

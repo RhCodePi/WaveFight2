@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 public class MenuManager : MonoBehaviour
@@ -9,7 +7,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject settings;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private TMP_Dropdown resolotionDropDown, qualityDropDown;
-    Resolution[] resolutions;
+    private Resolution[] resolutions;
 
     void Start()
     {
@@ -19,7 +17,6 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         BackToMenu();
-        Debug.Log(QualitySettings.GetQualityLevel());
     }
     public void Play()
     {
@@ -39,12 +36,7 @@ public class MenuManager : MonoBehaviour
     public void BackToMenu()
     {
         if(settings.activeInHierarchy)
-        {
-            if(Input.GetKey(KeyCode.Escape))
-            {
-                Back();
-            }
-        }
+            if(Input.GetKey(KeyCode.Escape))Back();
     }
 
     public void Back()

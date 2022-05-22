@@ -204,8 +204,8 @@ MonoBehaviour:
     m_Bits: 256
   enemyDamage: 10
   attackRange: 0.75
-  rotationY_1: 180
-  rotationY_2: 0
+  rotationY_1: 0
+  rotationY_2: 180
   speed: 3
 --- !u!1 &2129524959734245857
 GameObject:

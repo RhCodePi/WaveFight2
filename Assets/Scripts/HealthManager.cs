@@ -1,13 +1,12 @@
 ﻿using System;
-
 public class HealthManager
 {
     private int maxHealth, health;
     private bool isDead;
     private float rateScale;
-    public int GetHealth {get {return health;}}
-    public bool IsDead {get {return isDead;}}
-    public float RateScale {get {return rateScale;}}
+    public int getHealth {get {return health;}}
+    public bool getIsDead {get {return isDead;}}
+    public float getRateScale {get {return rateScale;}}
 
     public HealthManager(int maxHealth)
     {

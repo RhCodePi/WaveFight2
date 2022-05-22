@@ -798,7 +798,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 468.94, y: 369}
+  m_SizeDelta: {x: 803.8, y: 515.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157405945
 MonoBehaviour:
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   attackRange: 0.92
   bloodParticle: {fileID: 7472580252621643460, guid: 1e3dc1fff393eba478cc4410a746f4cc,
     type: 3}
-  enemeyLayers:
+  enemyLayers:
     serializedVersion: 2
     m_Bits: 512
 --- !u!1 &443226671
@@ -1638,7 +1638,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 468.94, y: 369}
+  m_SizeDelta: {x: 803.8, y: 515.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768464085
 MonoBehaviour:
@@ -1960,7 +1960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.8, y: -70}
+  m_AnchoredPosition: {x: -100, y: -85}
   m_SizeDelta: {x: 160, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900064926
@@ -2524,7 +2524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2a85758bad298499faa5b212d679ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList:
+  enemyTypeList:
   - {fileID: 1656502686228328871, guid: a76b4889740bd584c96382a00b2f6ac7, type: 3}
   levelEnemyCount: 2
   gameOver: {fileID: 157405943}
@@ -2766,7 +2766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 58}
+  m_AnchoredPosition: {x: 0, y: 41}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470767861
@@ -3138,7 +3138,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 468.94, y: 369}
+  m_SizeDelta: {x: 803.8, y: 515.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1611868296
 MonoBehaviour:
@@ -4013,7 +4013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: -70}
+  m_AnchoredPosition: {x: 100, y: -85}
   m_SizeDelta: {x: 160, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2012962057

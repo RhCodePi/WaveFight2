@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    private const int MAX_HEALTH = 100;
     [SerializeField] private GameObject popup, bloodParticle;
-    public Transform attackPoint;
-    public LayerMask playerLayer;
-    private Vector3 enemyPos, playerPos;
-    private float enemyMoveRange = 2.5f, enemyDir= 0;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask playerLayer;
     [SerializeField ]private int enemyDamage;
-    private float attackTime = 0, attackDuration = 2f; [SerializeField] private float attackRange = 0.75f;
     [SerializeField] private float rotationY_1, rotationY_2;
+    [SerializeField] public float speed = 3f;
+    [SerializeField] private float attackRange = 0.75f;
+    private const int MAX_HEALTH = 100;
+    private float enemyMoveRange = 2.5f;
+    private float attackTime = 0, attackDuration = 2f;
+    private Vector3 enemyPos, playerPos;
     private Animator enemyAnim;
     private GameManager gameManager;
-    [SerializeField] public float speed = 3f;
-    HealthManager _health;
+    private HealthManager _health;
     void Start()
     {
         enemyAnim = GetComponent<Animator>();
@@ -26,30 +27,27 @@ public class EnemyScript : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    private void Update() {
-        if(gameManager.getIsGameActive)
-        {
-            EnemyMovement();
-        }
+    private void Update() 
+    {
+        if(gameManager.getIsGameActive) EnemyMovement();
     }
 
     void EnemyMovement()
     {
         playerPos = GameObject.Find("Player").GetComponent<Transform>().position;
-        enemyPos = transform.position;
-        enemyDir = (enemyPos - playerPos).x; 
-        Vector3 displacement = (playerPos - enemyPos).normalized;
 
-        transform.eulerAngles = (enemyDir < 0) ? new Vector3(0, rotationY_1, 0) : new Vector3(0, rotationY_2, 0);
+        Vector3 displacement = (playerPos - transform.position);
 
-        if(Mathf.Abs((enemyPos - playerPos).x) < enemyMoveRange)
+        transform.eulerAngles = (displacement.x < 0) ? new Vector3(0, rotationY_1, 0) : new Vector3(0, rotationY_2, 0);
+
+        if(Mathf.Abs(displacement.x) < enemyMoveRange)
         {
             enemyAnim.SetBool("isMove", false);
             EnemyAttackPatern();
         }
         else{
             enemyAnim.SetBool("isMove", true);
-            transform.position += displacement * speed * Time.deltaTime;
+            transform.position += displacement.normalized * speed * Time.deltaTime;
         }
     }
 
@@ -58,10 +56,10 @@ public class EnemyScript : MonoBehaviour
         _health.Damage(damegeAmount);
         DamageIndicator dmgIndicator = Instantiate(popup.transform, transform.position + Vector3.up, Quaternion.identity).GetComponent<DamageIndicator>();
         dmgIndicator.SetDamageText(damegeAmount);
-        gameManager.SlideBar(_health.RateScale);
+        gameManager.SlideBar(_health.getRateScale);
         enemyAnim.SetTrigger("Hurt");
         
-        if(_health.GetHealth <= 0) Died();
+        if(_health.getHealth <= 0) Died();
     }
 
     public void Died()
@@ -93,14 +91,10 @@ public class EnemyScript : MonoBehaviour
             if(player != null) Instantiate(bloodParticle, player.transform.position, Quaternion.identity);
         }
     }
-
+    // for visual hitfields in the editor.
     private void OnDrawGizmosSelected()
     {
-
-        if (attackPoint == null)
-        {
-            return;
-        }
+        if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

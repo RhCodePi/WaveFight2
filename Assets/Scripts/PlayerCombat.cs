@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.92f;
+    [SerializeField] private GameObject bloodParticle;
+    [SerializeField] private LayerMask enemyLayers;
     private const int MAX_HEALTH = 100;
     private Animator playerAnim;
-    public Transform attackPoint;
-    [SerializeField] public float attackRange = 0.8f;
-    [SerializeField] private GameObject bloodParticle;
-    public LayerMask enemeyLayers;
-    private float attackFrequency = 0.75f;
-    private float attackTime = 0;
-    private GameManager gameManager;
-    private HealthBar playerHealthBar;
     private int playerDamage = 20;
-    HealthManager _PlayerHealth;
+    private float attackFrequency = 0.75f, attackTime = 0;
+    private HealthBar playerHealthBar;
+    private HealthManager _PlayerHealth;
+    private GameManager gameManager;
     private void Awake() {
         playerAnim = GetComponent<Animator>();
 
@@ -24,8 +23,7 @@ public class PlayerCombat : MonoBehaviour
         _PlayerHealth = new HealthManager(MAX_HEALTH);
 
         playerHealthBar = gameManager.getHealthBar;
-
-        playerHealthBar.SetMaxHealth(_PlayerHealth.GetHealth);
+        playerHealthBar.SetMaxHealth(_PlayerHealth.getHealth);
     }
     
     void Update()
@@ -43,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
     void PlayerAttack(){
         playerAnim.SetTrigger("Attack");
         
-        Collider2D[] hitFields = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemeyLayers);
+        Collider2D[] hitFields = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         foreach (Collider2D enemy in hitFields)
         {
@@ -57,30 +55,28 @@ public class PlayerCombat : MonoBehaviour
 
         _PlayerHealth.Damage(damageAmount);
 
-        playerHealthBar.SetCurrentHealth(_PlayerHealth.GetHealth);
+        playerHealthBar.SetCurrentHealth(_PlayerHealth.getHealth);
 
         playerAnim.SetTrigger("Hurt");
 
-        if (_PlayerHealth.GetHealth <=0 ) StartCoroutine(PlayerDied());
+        if (_PlayerHealth.getHealth <=0 ) StartCoroutine(PlayerDied());
     }
-
-    private void OnDrawGizmosSelected() {
-
-        if(attackPoint == null)
-        {
-            return;
-        }
+    //for visual hit fields in the editor.
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     IEnumerator PlayerDied()
     {
         playerAnim.SetBool("isDead", true);
+
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         this.enabled = false;
-        yield return  new WaitForSeconds(0.5f);
+        
+        yield return new WaitForSeconds(0.5f);
         gameManager.GameOver();
-        //Time.timeScale = 0;
     }
 }

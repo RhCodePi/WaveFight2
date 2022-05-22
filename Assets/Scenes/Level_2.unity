@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2a85758bad298499faa5b212d679ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList:
+  enemyTypeList:
   - {fileID: 1656502686228328871, guid: a76b4889740bd584c96382a00b2f6ac7, type: 3}
   - {fileID: 346295979069388837, guid: f012ce93319212c4fa3b6e3f078420bb, type: 3}
   levelEnemyCount: 3
@@ -996,7 +996,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 468.94, y: 369}
+  m_SizeDelta: {x: 803, y: 515.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246601104
 MonoBehaviour:
@@ -1192,7 +1192,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 468.94, y: 369}
+  m_SizeDelta: {x: 803, y: 515.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405373465
 MonoBehaviour:
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   attackRange: 0.92
   bloodParticle: {fileID: 7472580252621643460, guid: 1e3dc1fff393eba478cc4410a746f4cc,
     type: 3}
-  enemeyLayers:
+  enemyLayers:
     serializedVersion: 2
     m_Bits: 512
 --- !u!95 &502723957
@@ -3043,7 +3043,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 468.94, y: 369}
+  m_SizeDelta: {x: 803, y: 515.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110108679
 MonoBehaviour:
